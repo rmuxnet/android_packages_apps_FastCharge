@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
      Copyright (C) 2018 The LineageOS Project
-     Copyright (C) 2023 cyberknight777
+     Copyright (C) 2023-2024 cyberknight777
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
      You may obtain a copy of the License at
@@ -14,23 +14,10 @@
 -->
 <resources>
 
-    <!-- Display Features -->
-    <string name="display_features_title">Display Features</string>
-    <string name="display_features_summary">Contains toggles for HBM and DC Dimming</string>
-
-    <!-- DC Dimming settings -->
-    <string name="dc_dimming_title">Anti-Flicker Mode</string>
-    <string name="dc_dimming_summary">Reduces eye strain in low light conditions (Note: reduces image quality and color production)</string>
-    <string name="dc_dimming_summary_not_supported">DC Dimming is currently not supported by the kernel</string>
-
-    <!-- HBM settings -->
-    <string name="hbm_title">High Brightness Mode</string>
-    <string name="hbm_summary">Allows the display panel brightness to go above the maximum stock value. Which helps in improving visibility in direct sunlight</string>
-    <string name="hbm_summary_not_supported">HBM is currently not supported by the kernel</string>
-
-    <!-- FPS overlay settings -->
-    <string name="fps_title">FPS Overlay</string>
-    <string name="fps_summary">Shows overlay with current frames per second</string>
-    <string name="fps_summary_not_supported">FPS Overlay is currently not supported by the kernel</string>
-
+    <!-- Fast Charge -->
+    <string name="fast_charge_title">FastCharge</string>
+    <string name="fast_charge_summary">Contains a toggle to enable fast charging on this device</string>
+    <string name="fast_charging_title">Fast Charging</string>
+    <string name="fast_charging_summary">Disable to reduce the heat produced by the device while charging or to extend the lifespan of the battery</string>
+    <string name="fast_charging_summary_not_supported">Fast Charging is currently not supported by the kernel</string>
 </resources>

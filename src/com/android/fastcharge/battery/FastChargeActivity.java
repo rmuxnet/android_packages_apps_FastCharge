@@ -1,7 +1,7 @@
 /*
  * Copyright (C) 2015-2016 The CyanogenMod Project
  *               2020 YAAP
- *               2023 cyberknight777
+ *               2023-2024 cyberknight777
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,19 +16,19 @@
  * limitations under the License.
  */
 
-package com.android.displayfeatures.display;
+package com.android.fastcharge.battery;
 
 import android.os.Bundle;
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
 
-public class DisplayFeaturesActivity extends CollapsingToolbarBaseActivity {
+public class FastChargeActivity extends CollapsingToolbarBaseActivity {
 
-    private static final String TAG_DISPLAYFEATURES = "displayfeatures";
+    private static final String TAG_FAST_CHARGE = "FastCharge";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportFragmentManager().beginTransaction().replace(com.android.settingslib.collapsingtoolbar.R.id.content_frame,
-                new DisplayFeaturesFragment(), TAG_DISPLAYFEATURES).commit();
+                new FastChargeFragment(), TAG_FAST_CHARGE).commit();
     }
 }

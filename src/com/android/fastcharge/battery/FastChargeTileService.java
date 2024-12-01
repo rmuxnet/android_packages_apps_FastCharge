@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023 cyberknight777
+ * Copyright (C) 2023-2024 cyberknight777
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,13 +14,14 @@
  * limitations under the License.
  */
 
-package com.android.displayfeatures.display;
+package com.android.fastcharge.battery;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Icon;
 import android.os.Handler;
 import android.os.UserHandle;
 import android.service.quicksettings.Tile;
@@ -28,14 +29,14 @@ import android.service.quicksettings.TileService;
 
 import androidx.preference.PreferenceManager;
 
-import com.android.displayfeatures.R;
-import com.android.displayfeatures.utils.FileUtils;
+import com.android.fastcharge.R;
+import com.android.fastcharge.utils.FileUtils;
 
-public class DisplayFeaturesHbmTileService extends TileService {
+public class FastChargeTileService extends TileService {
 
-    private DisplayFeaturesConfig mConfig;
+    private FastChargeConfig mConfig;
 
-    private Intent mHbmIntent;
+    private Intent mFastChargeIntent;
 
     private boolean mInternalStart;
 
@@ -52,7 +53,7 @@ public class DisplayFeaturesHbmTileService extends TileService {
 
     private void updateUI() {
         final Tile tile = getQsTile();
-        boolean enabled = mConfig.isCurrentlyEnabled(mConfig.getHbmPath());
+        boolean enabled = mConfig.isCurrentlyEnabled(mConfig.getFastChargePath());
 
         if (!enabled) tryStopService();
 
@@ -63,11 +64,11 @@ public class DisplayFeaturesHbmTileService extends TileService {
     @Override
     public void onStartListening() {
         super.onStartListening();
-        mConfig = DisplayFeaturesConfig.getInstance(this);
+        mConfig = FastChargeConfig.getInstance(this);
 
         updateUI();
 
-        IntentFilter filter = new IntentFilter(mConfig.ACTION_HBM_SERVICE_CHANGED);
+        IntentFilter filter = new IntentFilter(mConfig.ACTION_FAST_CHARGE_SERVICE_CHANGED);
         registerReceiver(mServiceStateReceiver, filter);
     }
 
@@ -82,18 +83,16 @@ public class DisplayFeaturesHbmTileService extends TileService {
         super.onClick();
         mInternalStart = true;
 
-        boolean enabled = !mConfig.isCurrentlyEnabled(mConfig.getHbmPath());
-        FileUtils.writeLine(mConfig.getHbmPath(), enabled ? "1" : "0");
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 
-        Intent hbmIntent = new Intent(this,
-        com.android.displayfeatures.display.DisplayFeaturesHbmService.class);
+        boolean enabled = !mConfig.isCurrentlyEnabled(mConfig.getFastChargePath());
+        FileUtils.writeLine(mConfig.getFastChargePath(), enabled ? "1" : "0");
 
-        if (enabled) this.startService(hbmIntent);
-        else this.stopService(hbmIntent);
+        sharedPrefs.edit().putBoolean(mConfig.FASTCHARGE_KEY, enabled).commit();
 
-        Intent intent = new Intent(mConfig.ACTION_HBM_SERVICE_CHANGED);
+        Intent intent = new Intent(mConfig.ACTION_FAST_CHARGE_SERVICE_CHANGED);
 
-        intent.putExtra(mConfig.EXTRA_HBM_STATE, enabled);
+        intent.putExtra(mConfig.EXTRA_FAST_CHARGE_STATE, enabled);
         intent.setFlags(Intent.FLAG_RECEIVER_REGISTERED_ONLY);
         this.sendBroadcastAsUser(intent, UserHandle.CURRENT);;
 
@@ -101,8 +100,8 @@ public class DisplayFeaturesHbmTileService extends TileService {
     }
 
     private void tryStopService() {
-        if (mHbmIntent == null) return;
-        this.stopService(mHbmIntent);
-        mHbmIntent = null;
+        if (mFastChargeIntent == null) return;
+        this.stopService(mFastChargeIntent);
+        mFastChargeIntent = null;
     }
 }

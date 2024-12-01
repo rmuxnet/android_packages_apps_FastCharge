@@ -1,4 +1,4 @@
-#+TITLE: DisplayFeatures
+#+TITLE: FastCharge
 
 * Table of contents
 :PROPERTIES:
@@ -13,31 +13,25 @@
 
 * About
 
-ROM Frontend for display features such as HBM and DC Dimming.
+ROM Frontend for fast charging toggle.
 
 * Usage
 
 ** 1) Clone this repository to the specified directory
 
 #+BEGIN_SRC shell
-git clone https://github.com/cyberknight777/android_packages_apps_DisplayFeatures packages/apps/DisplayFeatures
+git clone https://github.com/cyberknight777/android_packages_apps_FastCharge packages/apps/FastCharge
 #+END_SRC
 
 ** 2) Adapt the following commit for your device and build it as it is :)
 
-https://github.com/YAAP/device_xiaomi_sunny/commit/07e0b8cd0946fd619effc094b6d7026f5bbc8e2e
+https://github.com/YAAP/device_xiaomi_sunny/commit/55862f9647af5485c20e00021fde61e3f08a1f79
 
 * Purpose
 
-+ To provide simple toggles for display features.
++ To provide a toggle for fast charging instead of using LineageOS' HIDL HAL.
 
 #+END_SRC
 * Credits
 
-+ [[https://t.me/cyberknight777][cyberknight777]] for developing this package.
-+ [[https://t.me/CannedShroud][CannedShroud]] for helping with this package.
-+ [[https://t.me/SakthivelNadar][Sakthivel Nadar]] for helping with this package.
-+ [[https://t.me/Waxaranai][Waxaranai]] for helping with this package.
-+ [[https://t.me/Idoybh2][Ido Ben-Hur]] for helping with this package.
-+ [[https://t.me/CoolDude6942][CoolDude]] for helping with this package.
-+ To whoever I imported/adapted from.
++ [[https://github.com/cyberknight777/android_packages_apps_DisplayFeatures][DisplayFeatures]] as it is the base for this package.

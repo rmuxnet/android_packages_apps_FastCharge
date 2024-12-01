@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2016 The CyanogenMod Project
- * Copyright (C) 2023 cyberknight777
+ * Copyright (C) 2023-2024 cyberknight777
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.android.displayfeatures.utils;
+package com.android.fastcharge.utils;
 
 import android.util.Log;
 import java.io.BufferedReader;

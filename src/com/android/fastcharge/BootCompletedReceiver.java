@@ -1,7 +1,7 @@
 /*
  * Copyright (C) 2015 The CyanogenMod Project
  *               2017-2019 The LineageOS Project
- *               2023 cyberknight777
+ *               2023-2024 cyberknight777
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,37 +16,32 @@
  * limitations under the License.
  */
 
-package com.android.displayfeatures;
+package com.android.fastcharge;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
-import com.android.displayfeatures.display.DisplayFeaturesConfig;
-import com.android.displayfeatures.utils.FileUtils;
+import com.android.fastcharge.battery.FastChargeConfig;
+import com.android.fastcharge.utils.FileUtils;
 import android.content.SharedPreferences;
 import androidx.preference.PreferenceManager;
 
 public class BootCompletedReceiver extends BroadcastReceiver {
     private static final boolean DEBUG = false;
-    private static final String TAG = "DisplayFeatures";
+    private static final String TAG = "FastCharge";
 
     @Override
     public void onReceive(final Context context, Intent intent) {
         if (DEBUG)
             Log.d(TAG, "Received boot completed intent");
 
-        DisplayFeaturesConfig mConfig = DisplayFeaturesConfig.getInstance(context);
+        FastChargeConfig mConfig = FastChargeConfig.getInstance(context);
 
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
 
-        boolean dcDimmingEnabled = sharedPrefs.getBoolean(mConfig.DISPLAYFEATURES_DC_DIMMING_KEY, false);
-        boolean hbmEnabled = sharedPrefs.getBoolean(mConfig.DISPLAYFEATURES_HBM_KEY, false);
-        FileUtils.writeLine(mConfig.getDcDimPath(), dcDimmingEnabled ? "1" : "0");
-        FileUtils.writeLine(mConfig.getHbmPath(), hbmEnabled ? "1" : "0");
-
-        // reset prefs that reflect a state that does not retain a reboot
-        sharedPrefs.edit().remove(mConfig.PREF_KEY_FPS_STATE).commit();
+        boolean fastchargeEnabled = sharedPrefs.getBoolean(mConfig.FASTCHARGE_KEY, false);
+        FileUtils.writeLine(mConfig.getFastChargePath(), fastchargeEnabled ? "1" : "0");
 
     }
 }

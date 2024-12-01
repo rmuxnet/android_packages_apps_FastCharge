@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2023 Yet Another AOSP Project
- *               2023 cyberknight777
+ *               2023-2024 cyberknight777
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.android.displayfeatures;
+package com.android.fastcharge;
 
 import static android.provider.SearchIndexablesContract.COLUMN_INDEX_XML_RES_CLASS_NAME;
 import static android.provider.SearchIndexablesContract.COLUMN_INDEX_XML_RES_ICON_RESID;
@@ -39,14 +39,14 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-import com.android.displayfeatures.display.DisplayFeaturesActivity;
+import com.android.fastcharge.battery.FastChargeActivity;
 
 public class SettingsSearchIndexablesProvider extends SearchIndexablesProvider {
 
     private static final List<SearchIndexableResource> RESOURCES = new ArrayList<>(
             Arrays.asList(
-        new SearchIndexableResource(1, R.xml.displayfeatures_settings,
-                DisplayFeaturesActivity.class.getName(), 0)));
+        new SearchIndexableResource(1, R.xml.fastcharge_settings,
+                FastChargeActivity.class.getName(), 0)));
 
     @Override
     public boolean onCreate() {
@@ -63,7 +63,7 @@ public class SettingsSearchIndexablesProvider extends SearchIndexablesProvider {
             ref[COLUMN_INDEX_XML_RES_CLASS_NAME] = null;
             ref[COLUMN_INDEX_XML_RES_ICON_RESID] = resource.iconResId;
             ref[COLUMN_INDEX_XML_RES_INTENT_ACTION] = "com.android.settings.action.IA_SETTINGS";
-            ref[COLUMN_INDEX_XML_RES_INTENT_TARGET_PACKAGE] = "com.android.displayfeatures";
+            ref[COLUMN_INDEX_XML_RES_INTENT_TARGET_PACKAGE] = "com.android.fastcharge";
             ref[COLUMN_INDEX_XML_RES_INTENT_TARGET_CLASS] = resource.className;
             cursor.addRow(ref);
         }

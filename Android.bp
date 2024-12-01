@@ -1,12 +1,12 @@
 //
 // Copyright (C) 2022 CannedShroud
-// Copyright (C) 2023 cyberknight777
+// Copyright (C) 2023-2024 cyberknight777
 //
 // SPDX-License-Identifier: Apache-2.0
 //
 
 android_app {
-    name: "DisplayFeatures",
+    name: "FastCharge",
     defaults: [
         "SettingsLibDefaults",
     ],
