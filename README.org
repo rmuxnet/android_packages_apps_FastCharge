@@ -20,7 +20,7 @@ ROM Frontend for fast charging toggle.
 ** 1) Clone this repository to the specified directory
 
 #+BEGIN_SRC shell
-git clone https://github.com/cyberknight777/android_packages_apps_FastCharge packages/apps/FastCharge
+git clone https://github.com/rmuxnet/android_packages_apps_FastCharge packages/apps/FastCharge
 #+END_SRC
 
 ** 2) Adapt the following commit for your device and build it as it is :)
